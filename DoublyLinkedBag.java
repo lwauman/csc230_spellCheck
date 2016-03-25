@@ -40,6 +40,7 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         }
         return result;
     }
+    
     private DoublyLinkedNode getReferenceTo(T anEntry){
         boolean found = false;
         DoublyLinkedNode currentNode = firstNode;
@@ -117,5 +118,4 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         }
         return result;
     }
-    
 }

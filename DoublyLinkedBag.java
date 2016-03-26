@@ -21,10 +21,11 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
     public boolean add(T newEntry){
         DoublyLinkedNode currentNode = firstNode;
         DoublyLinkedNode newNode = new DoublyLinkedNode(newEntry);
+        
         newNode.setNextNode(firstNode);
         firstNode = newNode;
         numberOfEntries++;
-        if(numberOfEntries != 1){
+        if(numberOfEntries > 1){
             currentNode.setPreviousNode(firstNode);
         }
         return true;
@@ -33,6 +34,7 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
     @Override
     public T remove() {
         T result = null;
+        
         if(firstNode != null){
             result = (T)firstNode.getData();
             firstNode = firstNode.getNextNode();
@@ -86,8 +88,7 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
             index++;
             currentNode = currentNode.getNextNode();
         }
-        return frequency;
-                
+        return frequency;    
     }
 
     @Override

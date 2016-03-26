@@ -14,7 +14,8 @@ public class SpellChecker{
             Scanner reader = new Scanner(correctWordFile);
             System.out.println("File found.");
             while(reader.hasNext()){
-                correctWords.add(reader.nextLine().toLowerCase());
+                //replaceAll gets rid of spaces
+                correctWords.add(reader.nextLine().toLowerCase().replaceAll(" ", ""));
             }
             return true;
         }

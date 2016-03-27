@@ -1,22 +1,27 @@
 public class DoublyLinkedBag<T> implements BagInterface<T>{
+    //variables
     private DoublyLinkedNode firstNode;
     private int numberOfEntries;
     
+    //constructor
     public DoublyLinkedBag(){
         firstNode = null;
         numberOfEntries = 0;
     }
     
+    //return numberOfEntries
     @Override
     public int getCurrentSize() {
         return numberOfEntries;
     }
-
+    
+    //returns true or false depending if any nodes have been created
     @Override
     public boolean isEmpty() {
         return numberOfEntries == 0;
     }
-
+    
+    //adds a node to the bag
     @Override
     public boolean add(T newEntry){
         DoublyLinkedNode currentNode = firstNode;
@@ -30,7 +35,8 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         }
         return true;
     }
-
+    
+    //removes firstNode from the bag (if it exists) and sets the next node to firstNode
     @Override
     public T remove() {
         T result = null;
@@ -43,6 +49,7 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         return result;
     }
     
+    //finds the node that contains anEntry (if it exists)
     private DoublyLinkedNode getReferenceTo(T anEntry){
         boolean found = false;
         DoublyLinkedNode currentNode = firstNode;
@@ -56,6 +63,7 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         return currentNode;
     }
 
+    //removes the first node that contains anEntry (if it exists)
     @Override
     public boolean remove(T anEntry) {
         boolean result = false;
@@ -70,12 +78,14 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         return result;
     }
 
+    //deletes all the nodes
     @Override
     public void clear() {
         while(!isEmpty())
             remove();
     }
 
+    //returns the number of nodes that contain anEntry in their data field
     @Override
     public int getFrequencyOf(T anEntry) {
         int frequency = 0;
@@ -91,6 +101,7 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         return frequency;    
     }
 
+    //returns true or false if any node contains anEntry in its data field
     @Override
     public boolean contains(T anEntry) {
         int index = 0;
@@ -105,6 +116,7 @@ public class DoublyLinkedBag<T> implements BagInterface<T>{
         return false;
     }
 
+    //represents all the nodes as an array
     @Override
     public T[] toArray() {
         @SuppressWarnings("unchecked")

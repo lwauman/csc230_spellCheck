@@ -19,12 +19,14 @@ public class Program4{
             System.out.print("Example: C:\\user\\YourName\\Desktop\\dictionary.txt: ");
             dictionaryLocation = kb.nextLine();
             dictionary = new File(dictionaryLocation);
+            //returns true if dictionary is set up properly false otherwise 
             stopLooping = spellChecker.setDictionary(dictionary);
             System.out.println("");
         }
         
         //checking entered words
         toCheck = "";
+        //while user wants to continue
         while(!toCheck.equals("0")){
             System.out.print("Type a word you would like to spell check. "
                     + "Enter 0 when you're finished: ");
@@ -40,9 +42,12 @@ public class Program4{
                         System.out.println("Output File not found");
                     }
                 }
+                //write misspelled word to file
                 printWriter.println(toCheck);   
             }
+            //user wants to stop
             else if(toCheck.equals("0"))
+                //if there was at least 1 misspelled word
                 if(printWriter != null){
                     printWriter.close();
                     System.out.println("A file called \"Misspelled_Words\""
@@ -50,8 +55,9 @@ public class Program4{
                             + " was ran from. Misspelled_Words contains all the words that"
                             + " were entered that are misspelled.");
                 }
-        }
-        if(printWriter == null)
-            System.out.println("No misspelled words were entered.");
-    }    
+                //all words entered were correctly spelled or 0 was the first thing entered
+                else
+                    System.out.println("No misspelled words were entered.");     
+        }    
+    }
 }
